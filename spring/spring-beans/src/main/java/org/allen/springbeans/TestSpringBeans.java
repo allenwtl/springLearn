@@ -21,6 +21,14 @@ public class TestSpringBeans {
 		String displayName = applicationContext.getDisplayName();
 		System.out.println("contextName:"+contextName);
 		System.out.println("displayName:"+displayName);
+
+		System.out.println("beanDeCount:"+applicationContext.getBeanDefinitionCount());
+
+		String [] beanNames = applicationContext.getBeanDefinitionNames();
+		for (String name : beanNames){
+			System.out.println(name);
+		}
+
 	}
 	
 	
