@@ -7,29 +7,38 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpringBeans {
 	
+	
+	private String youName ;
+	
 	private ApplicationContext applicationContext ;
 	
 	@Before
 	public void prepare(){
-		applicationContext = new ClassPathXmlApplicationContext("classpath*:/spring-config/spring-context.xml");
+		applicationContext = new ClassPathXmlApplicationContext("classpath:spring-config/spring-context.xml");
 		
 	}
 	
 	@Test
 	public void test(){
+		
 		String contextName = applicationContext.getApplicationName();
 		String displayName = applicationContext.getDisplayName();
 		System.out.println("contextName:"+contextName);
 		System.out.println("displayName:"+displayName);
 
-		System.out.println("beanDeCount:"+applicationContext.getBeanDefinitionCount());
-
-		String [] beanNames = applicationContext.getBeanDefinitionNames();
-		for (String name : beanNames){
-			System.out.println(name);
+		
+		String [] beanDeCount = applicationContext.getBeanDefinitionNames();
+		for (String string : beanDeCount) {
+			Object beanDe = applicationContext.getBean(string, Object.class);
+			System.out.println(string+":"+ beanDe);
+			setYouName(String.valueOf(beanDe));
 		}
+	}
 
+
+	public void setYouName(String youName) {
+		this.youName = youName;
 	}
 	
-	
+	 
 }
