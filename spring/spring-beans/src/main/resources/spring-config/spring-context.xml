@@ -6,9 +6,19 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 
 	default-lazy-init="true" default-autowire="default">
-	
+
 	<description>springbeans</description>
-	
-	<import resource="classpath*:child.xml"/>
-	
+
+	<context:component-scan base-package="org.allen.springbeans.bean">
+	</context:component-scan>
+
+
+	<bean class="java.lang.String" name="sex">
+		<constructor-arg value="man"></constructor-arg>
+	</bean>
+
+	<bean class="java.lang.Integer" name="name">
+		<constructor-arg value="1" />
+	</bean>
+
 </beans>
