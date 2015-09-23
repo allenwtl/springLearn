@@ -9,12 +9,12 @@
 
 	<description>springbeans</description>
 
-	<context:component-scan base-package="org.allen.springbeans.bean">
+	<context:component-scan base-package="org.allen.springbeans.bean" annotation-config="true">
 	</context:component-scan>
 
 
 	<bean class="java.lang.String" name="sex">
-		<constructor-arg value="man"></constructor-arg>
+		<constructor-arg value="man" />
 	</bean>
 
 	<bean class="java.lang.Integer" name="name">

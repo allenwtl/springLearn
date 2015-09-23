@@ -7,9 +7,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpringBeans {
 	
-	
-	private String youName ;
-	
 	private ApplicationContext applicationContext ;
 	
 	@Before
@@ -31,14 +28,9 @@ public class TestSpringBeans {
 		for (String string : beanDeCount) {
 			Object beanDe = applicationContext.getBean(string, Object.class);
 			System.out.println(string+":"+ beanDe);
-			setYouName(String.valueOf(beanDe));
 		}
 	}
 
-
-	public void setYouName(String youName) {
-		this.youName = youName;
-	}
 	
 	 
 }
