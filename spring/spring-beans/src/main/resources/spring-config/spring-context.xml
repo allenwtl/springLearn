@@ -5,20 +5,51 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 
-	default-lazy-init="true" default-autowire="default">
+	default-lazy-init="true" >
 
 	<description>springbeans</description>
 
-	<context:component-scan base-package="org.allen.springbeans.bean" annotation-config="true">
-	</context:component-scan>
+	<context:component-scan base-package="org.allen.springbeans.bean" annotation-config="true"/>
 
 
-	<bean class="java.lang.String" name="sex">
+	<bean class="java.lang.String" name="sex" >
 		<constructor-arg value="man" />
 	</bean>
-
-	<bean class="java.lang.Integer" name="name">
-		<constructor-arg value="1" />
+	
+	<bean class="java.lang.String" id="name" >
+		<constructor-arg value="this is name" />
 	</bean>
+	
+	<bean class="org.allen.springbeans.bean.TestBean" >
+		<!-- <property name="name" ref="name"/> -->
+	</bean>
+	
+	
+<!-- 	<bean class="org.allen.springbeans.bean.Color" id="color">
+		<property name="diwen" value="red" />
+		<property name="mianwen" value="black" />
+	</bean> -->
+	
+	<alias name="color" alias="colorA"/>
+	
+<!-- 	<bean class="org.allen.springbeans.bean.Color" id="color2">
+		<property name="diwen" value="red" />
+		<property name="mianwen" value="yellow" />
+	</bean>
+	
+	<bean class="org.allen.springbeans.bean.Animal" autowire="byName">
+		<property name="name" value="dog"/>
+	</bean> -->
+
+	
+<!-- 	<bean class="org.allen.springbeans.bean.StaticFactoryBean" factory-method="getRandom" name="staticFactoryBean"/> -->
+
+	<bean class="org.allen.springbeans.bean.MyFactoryBean" init-method="init" destroy-method="destory" name="myFactoryBean" />
+	
+	<bean id="colorBean" factory-bean="myFactoryBean" factory-method="createInstance" />
+	
+<!-- 	<bean class="org.allen.springbeans.bean.NewFactoryBean" id="colorBean" /> -->
+	
+	<alias name="colorBean" alias="color"/>
 
 </beans>
